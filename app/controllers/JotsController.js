@@ -41,6 +41,7 @@ export class JotsController {
         jotsService.saveActiveJot()
     }
 
+
 }
 
 function _closeOffCanvas() {

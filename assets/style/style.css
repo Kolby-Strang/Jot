@@ -17,6 +17,7 @@ p {
     margin-bottom: 0;
 }
 
+
 .menu-open {
     position: absolute;
     left: 0;
@@ -43,7 +44,9 @@ p {
     background-color: #4d4d66;
     border: solid #d4d4ea 3px;
     border-radius: 8px;
+    position: relative;
 }
+
 
 /* The color picker styles sadly aren't mine */
 .color-picker {

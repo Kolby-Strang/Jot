@@ -35,24 +35,24 @@ export class Jot {
             <div class="d-flex">
                 <button onclick="app.JotsController.openJot(-1)" class="btn btn-secondary rounded-5 mx-2"><i class="mdi mdi-arrow-left"></i></button>
                 <button onclick="app.JotsController.deleteJot('${this.id}')" class="btn btn-danger rounded-5"><i class="mdi mdi-trash-can"></i></button>
-            </div>
-          </div>
-
-          <!-- Jot Body -->
-          <div class="row p-3">
-            <!-- Jot Data -->
-            <div class="col-5 text-grey text-start">
-              <p class="mb-3">Created: ${this.createdDate.toLocaleString()}</p>
-              <p class="mb-3">Edited: ${_readableTime((new Date() - this.editedDate))} Ago</p>
-              <p> Words: ${this.wordCount}, Characters: ${this.charCount}</p>
-            </div>
-            <!-- Jot Writing Area -->
-            <div class="col-7 text-start">
-              <textarea onblur="app.JotsController.saveActiveJot()" name="content" id="activeJotContent" class="rounded p-2 w-100" rows="14"
+                </div>
+                </div>
+                
+                <!-- Jot Body -->
+                <div class="row p-3">
+                <!-- Jot Data -->
+                <div class="col-5 text-grey text-start">
+                <p class="mb-3">Created: ${this.createdDate.toLocaleString()}</p>
+                <p class="mb-3">Edited: ${_readableTime((new Date() - this.editedDate))} Ago</p>
+                <p> Words: ${this.wordCount}, Characters: ${this.charCount}</p>
+                </div>
+                <!-- Jot Writing Area -->
+                <div class="col-7 text-start">
+                <textarea onblur="app.JotsController.saveActiveJot()" name="content" id="activeJotContent" class="rounded p-2 w-100" rows="14"
                 placeholder="Jot Down Your Thoughts...">${this.content}</textarea>
-            </div>
-          </div>
-
+                </div>
+                </div>
+    
 
         </div>
         `
