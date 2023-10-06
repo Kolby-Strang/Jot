@@ -17,29 +17,54 @@
 
 <body>
   <!-- SECTION -->
-  <header>
-    <nav class="navbar navbar-dark navbar-expand bg-dark text-light no-select">
-      <a class="navbar-brand ms-3" href="#">
-        <img src="https://codeworks.blob.core.windows.net/public/assets/img/cw-mark.png" height="45" alt=""
-          loading="lazy">
-        <span class="ms-2">Jot</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <!-- NAVLINKS -->
-          <a href="#/about" class="nav-link">About</a>
-        </div>
-      </div>
-    </nav>
+  <header class="d-flex justify-content-between p-3">
+    <p class="fs-1">Jot.</p>
+    <button class="btn btn-primary menu-open" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasJotMenu" aria-controls="offcanvasExample">
+      >
+    </button>
   </header>
 
   <!-- SECTION -->
   <main id="router-view">
     <!-- PRIMARY VIEWPORT -->
+
+    <div class="container-fluid">
+      <div id="active-jot-container" class="row justify-content-center">
+        <!-- ACTIVE JOT HERE -->
+      </div>
+
+    </div>
+
+
+    <!-- OFF CANVAS -->
+    <div class="offcanvas offcanvas-start bg-primary text-white" tabindex="-1" id="offcanvasJotMenu"
+      aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fs-s" id="offcanvasExampleLabel">Jots: <span id="jot-count">0</span></h5>
+        <button type="button" class="btn btn-primary menu-close" data-bs-dismiss="offcanvas"
+          aria-label="Close">&lt;</button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="container-fluid">
+          <div id="jots-menu" class="row">
+            <!-- JOTS MENU -->
+
+          </div>
+
+          <div class="row">
+            <!-- JOT CREATION FORM -->
+            <form onsubmit="app.JotsController.createJot(event)" class="d-flex align-items-center mt-5">
+              <input type="text" name="title" placeholder="Create Jot..." minlength="3" maxlength="15" required>
+              <input type="color" name="color" id="color" class="color-picker" value="#ffffff">
+              <button type="submit" class="btn btn-secondary">Create</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-- SECTION -->

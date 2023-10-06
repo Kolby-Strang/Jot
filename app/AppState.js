@@ -1,4 +1,4 @@
-import { Value } from "./models/Value.js"
+import { Jot } from "./models/Jot.js"
 import { EventEmitter } from "./utils/EventEmitter.js"
 import { isValidProp } from "./utils/IsValidProp.js"
 import { loadState } from "./utils/Store.js"
@@ -6,12 +6,15 @@ import { loadState } from "./utils/Store.js"
 class ObservableAppState extends EventEmitter {
   page = ''
 
-  /** @type {import('./models/Value.js').Value[]} */
-  values = loadState('values', [Value])
+  jots = [
+    new Jot({ title: 'This jot is cool', color: '#f00' })
+  ]
+
+  activeJot = null
 
   // NOTE Used to load initial data
   init() {
-
+    this.jots = loadState('jots', [Jot])
   }
 
 }
