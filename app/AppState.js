@@ -15,6 +15,9 @@ class ObservableAppState extends EventEmitter {
   // NOTE Used to load initial data
   init() {
     this.jots = loadState('jots', [Jot])
+    if (window.localStorage.getItem('Jot_activeJot')) {
+      this.activeJot = loadState('activeJot', Jot)
+    }
   }
 
 }

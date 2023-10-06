@@ -13,7 +13,8 @@ export class Jot {
     get wordCount() {
         if (this.content == '')
             return 0
-        let wordsArr = this.content.split(' ')
+        const regex = new RegExp("\\s")
+        let wordsArr = this.content.split(regex)
         for (let i = wordsArr.length - 1; i >= 0; i--) {
             if (wordsArr[i] == '') {
                 wordsArr.splice(i, 1)
@@ -27,7 +28,7 @@ export class Jot {
 
     get activeCardTemplate() {
         return /*html*/`
-        <div class="col-11 text-center p-2 jot-card">
+        <div class="col-9 text-center p-2 jot-card">
           <!-- Active Jot Header -->
           <div class="d-flex justify-content-between p-3">
           <p class="fs-3"> ${this.title}<i class="mdi mdi-star-circle-outline color-icon" style="color: ${this.color};"></i></p>
@@ -42,7 +43,7 @@ export class Jot {
             <!-- Jot Data -->
             <div class="col-5 text-grey text-start">
               <p class="mb-3">Created: ${this.createdDate.toLocaleString()}</p>
-              <p class="mb-3">Edited: ${this.editedDate.toLocaleString()}</p>
+              <p class="mb-3">Edited: ${_readableTime((new Date() - this.editedDate))} Ago</p>
               <p> Words: ${this.wordCount}, Characters: ${this.charCount}</p>
             </div>
             <!-- Jot Writing Area -->
@@ -64,4 +65,18 @@ export class Jot {
         </div>
         `
     }
+}
+
+function _readableTime(milliseconds) {
+    const millisecondValues = [1000, 60000, 3600000, 86400000, 2628000000, 31536000000, 315360000000]
+    const valueNames = ['second', 'minute', 'hour', 'day', 'month', 'year', 'a really long time']
+    if (milliseconds > millisecondValues[6]) return valueNames[6]
+    for (let i = millisecondValues.length; i >= 0; i--) {
+        if (milliseconds / millisecondValues[i] > 1) {
+            const number = (milliseconds / millisecondValues[i]).toFixed(0)
+            return number + ' ' + valueNames[i] + (number == 1 ? '' : 's')
+        }
+    }
+    return '0 seconds'
+
 }

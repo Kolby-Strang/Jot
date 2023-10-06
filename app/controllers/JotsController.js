@@ -33,7 +33,8 @@ export class JotsController {
 
     openJot(jotId) {
         jotsService.openJot(jotId)
-        _closeOffCanvas()
+        if (jotId != -1)
+            _closeOffCanvas()
     }
 
     saveActiveJot() {
@@ -49,7 +50,9 @@ function _closeOffCanvas() {
 function _drawActiveJot() {
     const activeJot = AppState.activeJot
     if (!activeJot) {
-        setHTML('active-jot-container', 'nothing')
+        setHTML('active-jot-container', /*html*/`
+            <img class="bg-img" src="../../assets/img/Jot-bg-img.png" alt="home page img"> 
+        `)
     } else {
         setHTML('active-jot-container', activeJot.activeCardTemplate)
     }
